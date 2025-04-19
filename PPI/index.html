@@ -1,0 +1,166 @@
+# 帮我制作一个展示PPI项目主页的网页
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPI Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .project {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .project h2 {
+            margin-top: 0;
+        }
+        .project img {
+            max-width: 100%;
+            height: auto;
+        }
+        .project p {
+            line-height: 1.6;
+        }
+        .project a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .project a:hover {
+            background: #555;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .social-icons {
+            margin-top: 10px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .social-icons a:hover {
+            color: #ddd;
+        }
+        .one {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .two {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .two#ppi_image {
+            opacity: 1;
+        }
+        .two#ppi_video {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>PPI Project</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="project">
+            <h2>🔥 News</h2>
+            <p>(* indicates equal contributions)</p>
+            <ul>
+                <li>[2025.04] &nbsp One paper got accepted by RSS 2025!</li>
+            </ul>
+        </div>
+
+        <div class="project">
+            <h2>📝 Publications</h2>
+            <p>(* indicates equal contributions)</p>
+            <a href="#">View Publications</a>
+        </div>
+
+        <div class="project">
+            <h2>📽️ PPI Project</h2>
+            <div class="one">
+                <div class="two" id='ppi_image'>
+                    <img src='images/ppi/ppi_image.png' alt="PPI Image">
+                </div>
+                <div class="two" id='ppi_video'>
+                    <video width=120% height=100% muted autoplay loop>
+                        <source src="images/ppi/ppi_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PPI Project. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        function ppi_start() {
+            document.getElementById('ppi_video').style.opacity = "1";
+            document.getElementById('ppi_image').style.opacity = "0";
+        }
+        function ppi_stop() {
+            document.getElementById('ppi_video').style.opacity = "0";
+            document.getElementById('ppi_image').style.opacity = "1";
+        }
+    </script>
+    <script>
+        document.getElementById('ppi_video').addEventListener('mouseover', ppi_start);
+        document.getElementById('ppi_video').addEventListener('mouseout', ppi_stop);
+        document.getElementById('ppi_image').addEventListener('mouseover', ppi_start);
+        document.getElementById('ppi_image').addEventListener('mouseout', ppi_stop);
+    </script>
+</body>
+</html>
