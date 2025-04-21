@@ -552,8 +552,8 @@ document.addEventListener('DOMContentLoaded', function() {
       buttonIcon,
       buttonText,
       text: buttonText.textContent,
-      icon: buttonIcon.classList
     });
+    console.log(buttonIcon.classList.contains('fa-chevron-up')); 
 
     // 安全检查和状态判断
     if (!extraContent || !buttonIcon || !buttonText) {
