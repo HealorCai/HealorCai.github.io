@@ -160,7 +160,8 @@
       <!-- Animation. -->
       <div class="rows is-centered has-text-centered ">
         <div class="row is-full-width">
-          <h2 class="title is-3">Overview</h2>
+          <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines">Overview</h2>
+          <!-- <h2 class="title is-3">Overview</h2> -->
   
           <!-- Interpolating. -->
           <div class="content has-text-justified">
@@ -193,7 +194,8 @@
       <!-- Animation. -->
       <div class="rows is-centered has-text-centered ">
         <div class="row is-full-width">
-          <h2 class="title is-3">Method</h2>
+          <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines">Method</h2>
+          <!-- <h2 class="title is-3">Method</h2> -->
   
           <!-- Interpolating. -->
           <div class="content has-text-justified">
@@ -297,6 +299,147 @@
                     type="video/mp4">
           </video>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-small">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths is-centered">
+        <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines">Real World Deployment</h2>
+        <br>
+
+        <h3 class="title is-3 has-text-centered is-size-5-mobile">Four Main Tasks</h3>
+
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/carry.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered mt-2" style="font-weight: bold;">Carry the Tray</p>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/handover_real.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered mt-2" style="font-weight: bold;">Handover and Insert the Plate</p>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/wipe.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered mt-2" style="font-weight: bold;">Wipe the Plate</p>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/scan.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered mt-2" style="font-weight: bold;">Scan the Bottle</p>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="has-text-centered" style="margin: 2rem 0;">
+            <button id="show-extra-tasks" class="button is-link is-medium">
+              <span><strong>Show Extra Tasks</strong></span>
+              <span class="icon">
+                <i class="fas fa-chevron-down"></i>
+              </span>
+            </button>
+          </div>
+  
+          <div id="additional-demos" class="columns is-multiline" style="display: none;">
+            <div class="column is-half">
+              <div class="video-container has-text-centered">
+                <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                  <source src="./static/videos/wear.mp4" type="video/mp4">
+                </video>
+                <p class="has-text-centered mt-2" style="font-weight: bold;">Wear the Scarf</p>
+              </div>
+            </div>
+            
+            <div class="column is-half">
+              <div class="video-container has-text-centered">
+                <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                  <source src="./static/videos/press.mp4" type="video/mp4">
+                </video>
+                <p class="has-text-centered mt-2" style="font-weight: bold;">Press the Cap of Bottle</p>
+              </div>
+            </div>
+            
+            <div class="column is-half">
+              <div class="video-container has-text-centered">
+                <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                  <source src="./static/videos/scan_single_90.mp4" type="video/mp4">
+                </video>
+                <p class="has-text-centered mt-2" style="font-weight: bold;">Scan the Bottle with Single Arm</p>
+              </div>
+            </div>
+            
+            <div class="column is-half">
+              <div class="video-container has-text-centered">
+                <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                  <source src="./static/videos/scan_single_45.mp4" type="video/mp4">
+                </video>
+                <p class="has-text-centered mt-2" style="font-weight: bold;">Scan the Bottle with Single Arm</p>
+              </div>
+            </div> 
+  
+          </div>
+
+        <!-- <h3 class="title is-3 has-text-centered is-size-5-mobile" style="color: rgb(0, 130, 220);">Generalization</h3>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/lighting.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/appearance.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/camera_view.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/object_type.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/object_pose.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/embodiment.mp4" type="video/mp4">
+          </video>
+        </div> -->
+        
+        
+
       </div>
     </div>
   </div>
