@@ -19,7 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     console.log(buttonIcon.classList.contains('fa-chevron-up')); 
     console.log(buttonIcon.classList.contains('fa-chevron-down')); 
-
+    console.log(buttonIcon.classList.value); // 打印实际类名
+    console.log(buttonIcon.classList.contains('fas')); // 检查前缀
+    
     // 安全检查和状态判断
     if (!extraContent || !buttonIcon || !buttonText) {
       console.error('找不到必要的元素');
