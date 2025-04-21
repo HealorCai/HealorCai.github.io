@@ -353,7 +353,7 @@
 
           <div class="has-text-centered" style="margin: 2rem 0; width: 100%;">
             <button id="show-extra-tasks" class="button is dark is-medium" style="margin: 0 auto;">
-              <span><strong>Show Extra Tasks</strong></span>
+              <span class="button-text"><strong>Show Extra Tasks</strong></span>
               <span class="icon">
                 <i class="fas fa-chevron-down"></i>
               </span>
@@ -533,23 +533,27 @@
 </footer>
 
 <script>
-  // 添加事件监听
-  document.getElementById('show-extra-tasks').addEventListener('click', function() {
-  const extraContent = document.getElementById('extra-tasks');
-  const buttonIcon = this.querySelector('.icon i');
-  const buttonText = this.querySelector('span strong'); // 确保选择器正确
-  
-  if (extraContent.style.display === 'none') {
-    extraContent.style.display = 'flex';
-    buttonIcon.classList.replace('fa-chevron-down', 'fa-chevron-up');
-    buttonText.textContent = 'Hide Extra Tasks';
-  } else {
-    extraContent.style.display = 'none';
-    buttonIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
-    buttonText.textContent = 'Show Extra Tasks';
-  }
-});
-</script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('show-extra-tasks').addEventListener('click', function() {
+      const extraContent = document.getElementById('additional-demos'); // 确保ID正确
+      const buttonIcon = this.querySelector('.icon i');
+      const buttonText = this.querySelector('.button-text strong'); // 使用class选择器
+      
+      // 更可靠的显示状态检查
+      const isHidden = window.getComputedStyle(extraContent).display === 'none';
+      
+      if (isHidden) {
+        extraContent.style.display = 'flex';
+        buttonIcon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+        buttonText.textContent = 'Hide Extra Tasks';
+      } else {
+        extraContent.style.display = 'none';
+        buttonIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+        buttonText.textContent = 'Show Extra Tasks';
+      }
+    });
+  });
+  </script>
 
 </body>
 </html>
