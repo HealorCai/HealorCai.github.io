@@ -155,3 +155,18 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+.title-with-lines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem; /* 控制标题与线条的间距 */
+}
+
+.title-with-lines::before,
+.title-with-lines::after {
+  content: "";
+  flex: 1; /* 让线条自动填充剩余空间 */
+  height: 1px; /* 线条高度 */
+  background: #ccc; /* 线条颜色（可调整） */
+}
