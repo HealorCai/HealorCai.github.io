@@ -77,18 +77,3 @@ $(document).ready(function() {
 
 })
 
-document.getElementById('show-extra-tasks').addEventListener('click', function() {
-  const extraContent = document.getElementById('additional-demos');
-  const buttonIcon = this.querySelector('.icon i');
-  
-  // 切换内容显示/隐藏
-  if (extraContent.style.display === 'none') {
-    extraContent.style.display = 'flex'; // 或者 'block'，根据布局需要
-    buttonIcon.classList.replace('fa-chevron-down', 'fa-chevron-up');
-    this.querySelector('span strong').textContent = 'Hide Extra Tasks';
-  } else {
-    extraContent.style.display = 'none';
-    buttonIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
-    this.querySelector('span strong').textContent = 'Show Extra Tasks';
-  }
-});

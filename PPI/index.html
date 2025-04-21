@@ -532,5 +532,23 @@
   </div>
 </footer>
 
+<script>
+  // 添加事件监听
+  document.getElementById('show-extra-tasks').addEventListener('click', function() {
+    const extraContent = document.getElementById('additional-demos');
+    const buttonIcon = this.querySelector('.icon i');
+    
+    if (extraContent.style.display === 'none') {
+      extraContent.style.display = 'flex'; // Bulma columns 需要 flex
+      buttonIcon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+      this.querySelector('span strong').textContent = 'Hide Extra Tasks';
+    } else {
+      extraContent.style.display = 'none';
+      buttonIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      this.querySelector('span strong').textContent = 'Show Extra Tasks';
+    }
+  });
+</script>
+
 </body>
 </html>
