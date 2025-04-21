@@ -172,18 +172,20 @@
           </br>
           </br>
             <p class="content has-text-justified" style="font-size: 20px;">
-              <b>End-to-End PIDM:</b> We propose an end-to-end model <b>Seer</b> 
-              that predicts actions using inverse dynamics models conditioned on the robot's forecasted visual states, 
-              termed as Predictive Inverse Dynamics Models (PIDM).
+              <b>PPI (keyPose and Pointflow Interface)</b> is an end-to-end framework which integrates the prediction of 
+              target gripper poses and object pointflow with the continuous actions estimation. 
             </p>
             <p class="content has-text-justified" style="font-size: 20px;">
-              <b>Scalability:</b> <b>Seer</b> is initially pre-trained on large-scale robotic datasets, such as DROID, 
-              and can be adapted to downstream tasks with a little fine-tuning data. With an increasing model size,
-              <b>Seer</b> achieves a better performance.
+              In contrast to (i) keyframe-based policies, which excel in spatial localization but struggle with movement restrictions (e.g.,
+              curved motion and collision-free actions), and (ii) continuous-action-based policies, which accommodate diverse trajectories
+              but lack strong perception, 
+              <b>PPI</b> enable the model to effectively attend to the target manipulation area, while the overall framework guides diverse
+              and collision-free trajectories.
             </p>
             <p class="content has-text-justified" style="font-size: 20px;">
-              <b>Effectiveness:</b> <b>Seer</b> outperforms state-of-the-art methods across both simulation and real-world experiments.
-              It demonstrates superior generalization for novel objects, lighting conditions, and environments under high-intensity disturbances. Notably, Seer sets a new state-of-the-art on CALVIN ABC-D benchmark, achieving an average length of <b>4.28</b>.
+              By combining interface predictions with continuous actions estimation, PPI demonstrates superior
+              performance in diverse bimanual manipulation tasks, providing enhanced <b>spatial localization</b> and satisfying flexibility in
+              handling <b>movement restrictions</b>.
             </p>
       </div>
     </div>
