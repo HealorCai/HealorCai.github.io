@@ -208,18 +208,12 @@
           </br>
           </br>
             <p class="content has-text-justified" style="font-size: 20px;">
-              <b>End-to-End PIDM:</b> We propose an end-to-end model <b>Seer</b> 
-              that predicts actions using inverse dynamics models conditioned on the robot's forecasted visual states, 
-              termed as Predictive Inverse Dynamics Models (PIDM).
-            </p>
-            <p class="content has-text-justified" style="font-size: 20px;">
-              <b>Scalability:</b> <b>Seer</b> is initially pre-trained on large-scale robotic datasets, such as DROID, 
-              and can be adapted to downstream tasks with a little fine-tuning data. With an increasing model size,
-              <b>Seer</b> achieves a better performance.
-            </p>
-            <p class="content has-text-justified" style="font-size: 20px;">
-              <b>Effectiveness:</b> <b>Seer</b> outperforms state-of-the-art methods across both simulation and real-world experiments.
-              It demonstrates superior generalization for novel objects, lighting conditions, and environments under high-intensity disturbances. Notably, Seer sets a new state-of-the-art on CALVIN ABC-D benchmark, achieving an average length of <b>4.28</b>.
+              <b>PPI</b> consists of three components: 
+              (a) <b>Perception.</b> PPI first construct a 3D semantic neural field and sample initial query points for pointflow prediction. 
+              (b) <b>Interface.</b> Next, two intermediate interfaces are defined: <b>target gripper poses</b> and <b>object pointflow</b>. 
+              (c) <b>Prediction.</b> Finally, a diffusion transformer incorporates robot proprio tokens, scene tokens, language
+              tokens, pointflow query tokens and action tokens with gaussian noise. Using a carefully designed unidirectional
+              attention, the model progressively denoises action predictions conditioned on the interfaces.
             </p>
       </div>
     </div>
