@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+        content="Gripper Keypose and Object Pointflow as Interfaces for Bimanual Robotic Manipulation.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nerfies: Deformable Neural Radiance Fields</title>
+  <title>Gripper Keypose and Object Pointflow as Interfaces for Bimanual Robotic Manipulation</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -42,114 +41,78 @@
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</nav>
-
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
-            <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
-            </span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
-          </div>
-
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-fullhd">
+        <div class="columns is-centered">
           <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
+            <h1 class="title is-1 publication-title">Gripper Keypose and Object Pointflow <br> as Interfaces for Bimanual Robotic Manipulation</h1>
+            <h3 class="title is-4 conference-authors"><a target="_blank" >RSS 2025</a></h3>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a target="_blank" href="https://github.com/yuyinyang3y">Yuyin Yang</a><sup>*,1,2</sup>,
+              </span>
+              <span class="author-block">
+                <a target="_blank" href="https://github.com/healorcai">Zetao Cai</a><sup>*,1,3</sup>,
+              </span>
+              <span class="author-block">
+                  <a target="_blank" href="https://github.com/Nimolty?tab=overview&from=2024-01-01&to=2024-01-31">Yang Tian</a><sup>1,4</sup>,
+                </span>
+              <span class="author-block">
+                <a target="_blank" href="https://scholar.google.com/citations?user=kYrUfMoAAAAJ&hl=zh-CN">Jia Zeng</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a target="_blank" href="https://oceanpang.github.io/">Jiangmiao Pang</a><sup>&#x2709;1</sup>,
+              </span>
+            </div>
+  
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Shanghai AI Lab,</span>
+              <span class="author-block"><sup>2</sup>Fudan University,</span>
+              <span class="author-block"><sup>3</sup>Zhejiang University,</span>
+              <span class="author-block"><sup>4</sup>Peking University,</span>
+              <span class="author-block"><sup>*</sup>Equal Contribution,</span>
+              <span class="author-block"><sup>&#x2709;</sup>Corresponding Author</span>
+            </div>
+  
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a target="_blank" href="paper.pdf"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+  
+              <!-- Arxiv Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
+                <a target="_blank" href="https://yuyinyang3y.github.io/PPI"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
+                      <i class="fas fa-file"></i>
                   </span>
-                  <span>Paper</span>
+                  <span>ArXiv</span>
                 </a>
               </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
+  
               <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+              <!-- <span class="link-block">
+                <a target="_blank" href="demo.mp4"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
                   </span>
                   <span>Video</span>
                 </a>
-              </span>
+              </span> -->
+  
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies"
+                <a target="_blank" href="https://yuyinyang3y.github.io/PPI"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -157,6 +120,7 @@
                   <span>Code</span>
                   </a>
               </span>
+
               <!-- Dataset Link. -->
               <span class="link-block">
                 <a href="https://github.com/google/nerfies/releases/tag/0.1"
@@ -166,14 +130,48 @@
                   </span>
                   <span>Data</span>
                   </a>
-            </div>
+              </span>
 
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="rows">
+      <!-- Animation. -->
+      <div class="rows is-centered has-text-centered ">
+        <div class="row is-full-width">
+          <h2 class="title is-3">Overview</h2>
+  
+          <!-- Interpolating. -->
+          <div class="content has-text-justified">
+          <!-- <br> -->
+          </div>
+          <img src="static/images/ppi_image.png" class="interpolation-image" />
+          </br>
+          </br>
+            <p class="content has-text-justified" style="font-size: 20px;">
+              <b>End-to-End PIDM:</b> We propose an end-to-end model <b>Seer</b> 
+              that predicts actions using inverse dynamics models conditioned on the robot's forecasted visual states, 
+              termed as Predictive Inverse Dynamics Models (PIDM).
+            </p>
+            <p class="content has-text-justified" style="font-size: 20px;">
+              <b>Scalability:</b> <b>Seer</b> is initially pre-trained on large-scale robotic datasets, such as DROID, 
+              and can be adapted to downstream tasks with a little fine-tuning data. With an increasing model size,
+              <b>Seer</b> achieves a better performance.
+            </p>
+            <p class="content has-text-justified" style="font-size: 20px;">
+              <b>Effectiveness:</b> <b>Seer</b> outperforms state-of-the-art methods across both simulation and real-world experiments.
+              It demonstrates superior generalization for novel objects, lighting conditions, and environments under high-intensity disturbances. Notably, Seer sets a new state-of-the-art on CALVIN ABC-D benchmark, achieving an average length of <b>4.28</b>.
+            </p>
+      </div>
+    </div>
+  </section>
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
