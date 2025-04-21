@@ -1,4 +1,4 @@
-window.HELP_IMPROVE_VIDEOJS = false;
+// window.HELP_IMPROVE_VIDEOJS = false;
 
 document.addEventListener('DOMContentLoaded', function() {
   const button = document.getElementById('show-extra-tasks');
