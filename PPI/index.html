@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
@@ -399,46 +400,8 @@
   
           </div>
 
-        <!-- <h3 class="title is-3 has-text-centered is-size-5-mobile" style="color: rgb(0, 130, 220);">Generalization</h3>
-
-        <div class="video-container">
-          <video autoplay muted loop playsinline height="100%">
-            <source src="./static/videos/lighting.mp4" type="video/mp4">
-          </video>
-        </div>
-
-        <div class="video-container">
-          <video autoplay muted loop playsinline height="100%">
-            <source src="./static/videos/appearance.mp4" type="video/mp4">
-          </video>
-        </div>
-
-        <div class="video-container">
-          <video autoplay muted loop playsinline height="100%">
-            <source src="./static/videos/camera_view.mp4" type="video/mp4">
-          </video>
-        </div>
-
-        <div class="video-container">
-          <video autoplay muted loop playsinline height="100%">
-            <source src="./static/videos/object_type.mp4" type="video/mp4">
-          </video>
-        </div>
-
-        <div class="video-container">
-          <video autoplay muted loop playsinline height="100%">
-            <source src="./static/videos/object_pose.mp4" type="video/mp4">
-          </video>
-        </div>
-
-        <div class="video-container">
-          <video autoplay muted loop playsinline height="100%">
-            <source src="./static/videos/embodiment.mp4" type="video/mp4">
-          </video>
-        </div> -->
         
-        
-
+    
       </div>
     </div>
   </div>
@@ -484,6 +447,45 @@
     </div> -->
     <!--/ Abstract. -->
 
+    <section class="hero is-light is-small">
+      <div class="hero-body">
+        <div class="container">
+          <h3 class="title is-3 has-text-centered">Generalization</h2>
+    
+          <div id="results-carousel" class="carousel results-carousel">
+            <!-- 每个视频项现在包含一个文字说明的div -->
+            <div class="item item-box">
+              <video poster="" id="box" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/box.mp4" type="video/mp4">
+              </video>
+              <div class="video-caption has-text-centered">Box manipulation demonstration</div>
+            </div>
+            
+            <div class="item item-drawer">
+              <video poster="" id="drawer" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/drawer.mp4" type="video/mp4">
+              </video>
+              <div class="video-caption has-text-centered">Drawer opening simulation</div>
+            </div>
+            
+            <div class="item item-dustpan">
+              <video poster="" id="dustpan" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/dustpan.mp4" type="video/mp4">
+              </video>
+              <div class="video-caption has-text-centered">Dustpan usage example</div>
+            </div>
+            
+            <div class="item item-fridge">
+              <video poster="" id="fridge" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/fridge.mp4" type="video/mp4">
+              </video>
+              <div class="video-caption has-text-centered">Fridge interaction model</div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
  
 
 
@@ -550,9 +552,6 @@ document.addEventListener('DOMContentLoaded', function() {
       buttonText,
       text: buttonText.textContent,
     });
-    if (!buttonIcon) {
-      console.error('未找到图标，实际HTML结构:', this.querySelector('.icon').innerHTML);
-    }
 
     // 安全检查和状态判断
     if (!extraContent || !buttonIcon || !buttonText) {
