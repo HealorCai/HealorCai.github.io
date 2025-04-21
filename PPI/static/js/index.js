@@ -30,11 +30,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // 切换状态
     if (isHidden) {
       extraContent.style.display = 'flex';
-      buttonIcon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+      buttonIcon.classList.remove('fa-chevron-down');
+      buttonIcon.classList.add('fa-chevron-up');
       buttonText.textContent = 'Hide Extra Tasks';
     } else {
       extraContent.style.display = 'none';
-      buttonIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      buttonIcon.classList.remove('fa-chevron-up');
+      buttonIcon.classList.add('fa-chevron-down');
       buttonText.textContent = 'Show Extra Tasks';
     }
   });
