@@ -283,15 +283,24 @@
 
           <br>
 
-          <div class="has-text-centered" style="margin: 2rem 0; width: 100%;">
+          <!-- <div class="has-text-centered" style="margin: 2rem 0; width: 100%;">
             <button id="show-extra-tasks" class="button is-dark is-medium" style="margin: 0 auto;">
               <span class="button-text"><strong>Show Extra Tasks</strong></span>
               <span class="icon">
                 <i class="fas fa-chevron-down"></i>
               </span>
             </button>
-          </div>
+          </div> -->
   
+          <div class="has-text-centered" style="margin: 2rem 0; width: 100%;">
+            <button id="show-extra-tasks" class="button is-dark is-medium" style="margin: 0 auto;">
+              <span><strong>Show Extra Tasks</strong></span>
+              <span class="icon">
+                <i class="fas fa-chevron-down"></i>
+              </span>
+            </button>
+          </div>
+
           <div id="extra-tasks" class="columns is-multiline" style="display: none;">
             <div class="column is-half">
               <div class="video-container has-text-centered">
@@ -528,6 +537,52 @@
   </div>
 </footer>
 
+<script>
+  // 确保页面完全加载后执行
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      const showMoreButton = document.getElementById('show-extra-tasks');
+      const additionalDemos = document.getElementById('extra-tasks');
+      
+      if (showMoreButton && additionalDemos) {
+        console.log('Inline script: initializing button');
+        
+        // 确保初始状态正确
+        additionalDemos.style.display = 'none';
+        
+        // 如果按钮还没有事件监听器，添加一个
+        if (!showMoreButton.hasAttribute('data-inline-initialized')) {
+          showMoreButton.setAttribute('data-inline-initialized', 'true');
+          
+          showMoreButton.addEventListener('click', function() {
+            console.log('Inline script: button clicked');
+            const computedStyle = window.getComputedStyle(additionalDemos);
+            const isHidden = computedStyle.display === 'none';
+            
+            additionalDemos.style.display = isHidden ? 'flex' : 'none';
+            
+            const buttonText = showMoreButton.querySelector('span:first-child');
+            const buttonIcon = showMoreButton.querySelector('.fas');
+            
+            if (buttonText && buttonIcon) {
+              if (isHidden) {
+                buttonText.innerHTML = '<strong>Hide Extra Tasks</strong>';
+                buttonIcon.classList.remove('fa-chevron-down');
+                buttonIcon.classList.add('fa-chevron-up');
+              } else {
+                buttonText.innerHTML = '<strong>Show Extra Tasks</strong>';
+                buttonIcon.classList.remove('fa-chevron-up');
+                buttonIcon.classList.add('fa-chevron-down');
+              }
+            }
+          });
+        }
+      } else {
+        console.error('Inline script: Button or additional demos section not found');
+      }
+    }, 1000); // 延迟1秒确保DOM完全加载
+  });
+</script>
 
 </body>
 </html>
