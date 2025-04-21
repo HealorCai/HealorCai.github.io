@@ -540,14 +540,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const extraContent = document.getElementById('extra-tasks'); 
     
     // 更精准的选择器
-    const buttonIcon = this.querySelector('.icon i.fas'); 
+    const buttonIcon = this.querySelector('.icon'); 
     const buttonText = this.querySelector('.button-text strong');
     
     // 调试输出
     console.log('找到的元素:', {
       extraContent,
       buttonIcon,
-      buttonText
+      buttonText.textContent
     });
 
     // 安全检查和状态判断
