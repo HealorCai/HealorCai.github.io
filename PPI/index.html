@@ -547,8 +547,12 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('找到的元素:', {
       extraContent,
       buttonIcon,
-      buttonText.textContent
+      buttonText,
+      text: buttonText.textContent,
     });
+    if (!buttonIcon) {
+      console.error('未找到图标，实际HTML结构:', this.querySelector('.icon').innerHTML);
+    }
 
     // 安全检查和状态判断
     if (!extraContent || !buttonIcon || !buttonText) {
