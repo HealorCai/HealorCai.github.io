@@ -351,8 +351,8 @@
 
           <br>
 
-          <div class="has-text-centered" style="margin: 2rem 0;">
-            <button id="show-extra-tasks" class="button is-link is-medium">
+          <div class="has-text-centered" style="margin: 2rem 0; width: 100%;">
+            <button id="show-extra-tasks" class="button is-link is-medium" style="margin: 0 auto;">
               <span><strong>Show Extra Tasks</strong></span>
               <span class="icon">
                 <i class="fas fa-chevron-down"></i>
@@ -535,19 +535,20 @@
 <script>
   // 添加事件监听
   document.getElementById('show-extra-tasks').addEventListener('click', function() {
-    const extraContent = document.getElementById('additional-demos');
-    const buttonIcon = this.querySelector('.icon i');
-    
-    if (extraContent.style.display === 'none') {
-      extraContent.style.display = 'flex'; // Bulma columns 需要 flex
-      buttonIcon.classList.replace('fa-chevron-down', 'fa-chevron-up');
-      this.querySelector('span strong').textContent = 'Hide Extra Tasks';
-    } else {
-      extraContent.style.display = 'none';
-      buttonIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
-      this.querySelector('span strong').textContent = 'Show Extra Tasks';
-    }
-  });
+  const extraContent = document.getElementById('additional-demos');
+  const buttonIcon = this.querySelector('.icon i');
+  const buttonText = this.querySelector('span strong'); // 确保选择器正确
+  
+  if (extraContent.style.display === 'none') {
+    extraContent.style.display = 'flex';
+    buttonIcon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+    buttonText.textContent = 'Hide Extra Tasks';
+  } else {
+    extraContent.style.display = 'none';
+    buttonIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+    buttonText.textContent = 'Show Extra Tasks';
+  }
+});
 </script>
 
 </body>
