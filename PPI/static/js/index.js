@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const extraContent = document.getElementById('extra-tasks'); 
     
     // 修正选择器 - 精确选择 <i> 元素
-    const buttonIcon = this.querySelector('.icon i');  // 关键修改
+    const buttonIcon = this.querySelector('.fas');  // 关键修改
     const buttonText = this.querySelector('.button-text strong');
     
     // 调试输出
