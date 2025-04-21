@@ -171,15 +171,3 @@ body {
   background: #ccc; /* 线条颜色（可调整） */
 }
 
-.video-caption {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #333;
-  padding: 5px;
-}
-
-.item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
