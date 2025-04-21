@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
       text: buttonText.textContent,
     });
     console.log(buttonIcon.classList.contains('fa-chevron-up')); 
+    console.log(buttonIcon.classList.contains('fa-chevron-down')); 
 
     // 安全检查和状态判断
     if (!extraContent || !buttonIcon || !buttonText) {
