@@ -147,7 +147,7 @@
     <!-- Paper video. -->
     <div class="columns is-centered has-text-centered" style="max-width: 1000px; margin: 0 auto;">
       <div class="column is-four-fifths">
-        <!-- <h2 class="title is-3">Video</h2> -->
+        <!-- <h2 class="title is-2">Video</h2> -->
         <div class="publication-video">
           <iframe src="https://www.youtube.com/embed/L_RraC-AFQE?si=Bx2JNijq1F8JMmAF"
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -163,8 +163,7 @@
       <!-- Animation. -->
       <div class="rows is-centered has-text-centered ">
         <div class="row is-full-width">
-          <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines">Overview</h2>
-          <!-- <h2 class="title is-3">Overview</h2> -->
+          <h2 class="title is-2 has-text-centered is-size-5-mobile title-with-lines">Overview</h2>
   
           <!-- Interpolating. -->
           <div class="content has-text-justified">
@@ -199,7 +198,7 @@
       <!-- Animation. -->
       <div class="rows is-centered has-text-centered ">
         <div class="row is-full-width">
-          <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines">Method</h2>
+          <h2 class="title is-2 has-text-centered is-size-5-mobile title-with-lines">Method</h2>
           <!-- <h2 class="title is-3">Method</h2> -->
   
           <!-- Interpolating. -->
@@ -224,7 +223,7 @@
 
 
 <section class="section is-small">
-        <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines">Real World Experiments </h2>
+        <h2 class="title is-2 has-text-centered is-size-5-mobile title-with-lines">Real World Experiments </h2>
 
         <h3 class="title is-3 has-text-centered is-size-5-mobile">Four Main Tasks</h3>
 
@@ -328,7 +327,9 @@
 
   <br>
 
-  <h3 class="title is-3 has-text-centered is-size-5-mobile">Generalization</h3>
+  <div class="container">
+    <h3 class="title is-3 has-text-centered is-size-5-mobile">Generalization</h3>
+  </div>
 
   <div class="columns is-multiline" style="max-width: 1200px; margin: 0 auto;">
 
@@ -418,17 +419,25 @@
 
 
 
-  <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines">Simulation Experiments </h2>
+<section class="section is-small">
+  <h2 class="title is-2 has-text-centered is-size-5-mobile title-with-lines">Simulation Experiments </h2>
 
   <h3 class="title is-3 has-text-centered ">Ablation Study on RLBench2</h3>
   <img src="./static/images/ablation.png" class="interpolation-image" />
+  <ul style="list-style-type: disc;">
+    <li>Relying solely on either keyframe or continuous actions is insufficient for general manipulation tasks.</li>
+    <li>Conditioning on separate interfaces improves performance, likely due to the local spatial features they provide. </li>
+    <li>Combining both interfaces yields further gains, highlighting the synergy between keypose and pointflow in enhancing performance on downstream tasks. </li>
+    <li>Less number of keyframes will reduce the interface’s effectiveness and lead to lower success rates.</li>
+  </ul>
+</section>
 
   <br>
   
-  <h3 class="title is-3 has-text-centered ">Interfaces Visualization in Simulation</h2>
+<h3 class="title is-3 has-text-centered ">Interfaces Visualization in Simulation</h3>
 
 <section class="hero is-light is-small">
-  <div class="hero-body">
+  <div class="hero-body ">
     <div class="container">
 
       <div id="results-carousel" class="carousel results-carousel">
