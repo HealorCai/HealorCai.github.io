@@ -1,0 +1,794 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Skel-WAM: A Hand-Skeleton-Conditioned World Action Model for Human-to-Robot Manipulation Transfer</title>
+    <meta name="description" content="Explore how Skel-WAM learns robot-missing task variations from human demonstrations through a shared hand-skeleton interface.">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="./static/images/favicon.svg">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <script defer src="./static/js/results.js"></script>
+    <script defer src="./static/js/media.js"></script>
+    <script defer src="./static/js/index.js"></script>
+  </head>
+  <body id="top">
+    <a class="skip" href="#video">Skip to content</a>
+    <header class="cover">
+      <div class="cover-content">
+        <h1><img class="title-logo" src="./static/images/title.png" width="2172" height="724" alt="Skel-WAM" fetchpriority="high">A Hand-Skeleton-Conditioned World Action Model<br>for Human-to-Robot Manipulation Transfer</h1>
+        <div class="authors">
+          <a href="https://healorcai.github.io/" target="_blank" rel="noopener">Zetao Cai</a><sup>1,2</sup>
+          · Yaping Li<sup>1</sup>
+          · Yiqun Wang<sup>2</sup>
+          · Xinyu Zhan<sup>2</sup>
+          · Yuyin Yang<sup>2</sup>
+          <br>
+          Haoxiang Ma<sup>2</sup>
+          · Kailin Li<sup>2</sup>
+          · Tao Lu<sup>2</sup>
+          · Jiangmiao Pang<sup>3</sup>
+          · Linning Xu<sup>1,†</sup>
+          · Dahua Lin<sup>1,2,4,†</sup>
+        </div>
+        <p class="affiliations">
+          <sup>1</sup> The Chinese University of Hong Kong · <sup>2</sup> Shanghai AI Laboratory
+          <br>
+          <sup>3</sup> Joy Future Academy · <sup>4</sup> CPII under InnoHK
+          <br>
+          † Corresponding authors
+        </p>
+        <nav class="resource-icons" aria-label="Project links">
+          <span class="resource unavailable" aria-disabled="true" title="arXiv link coming soon">
+            <svg viewBox="0 0 448 512" aria-hidden="true">
+              <g transform="matrix(1.5499998,0,0,-1.5499998,-123.19936,553.59966)">
+                <path fill="currentColor" d="m 119.65,351.996 c -5.84961,0.13477 -11.1943,-3.29883 -13.502,-8.67578 -2.19629,-5.27051 -0.61914,-8.9668 4.19727,-15.8652 7.05469,-10.3799 78.8242,-96.5625 78.8242,-96.5625 l -15.8828,-14.8633 c -13.3809,-13.3779 -13.9561,-31.333 -1.50977,-43.7754 l 18.4922,-17.6133 -51.5977,-63.377 c -4.00586,-4.26758 -6.48535,-11.7559 -4.24805,-17.1309 2.27832,-5.53613 7.69727,-9.12891 13.6836,-9.07031 3.83398,0.0957 7.43262,1.87402 9.83789,4.86133 l 61.3691,57.0566 94.5762,-90.0703 c 3.19434,-3.08398 7.44336,-4.83984 11.8828,-4.91016 1.60449,0.0039 3.19824,0.245117 4.73242,0.714844 5.7793,1.80566 10.249,6.41797 11.8711,12.252 1.2998,5.47363 -0.27637,11.2334 -4.18164,15.2832 l -83.0859,100.011996 14.8789,13.834 c 11.0957,10.0029 11.1543,27.3906 0.12695,37.4688 l -16.2949,15.6309 56.2559,66.4434 0.0742,0.0859 0.0664,0.0899 c 5.02734,6.53125 7.43164,11.5615 4.83984,17.9395 -3.13379,5.96875 -8.69727,10.29 -15.2559,11.8516 -0.67676,0.0908 -1.35938,0.13574 -2.04297,0.13671 l -0.004,-0.0117 c -4.42871,-0.27051 -8.61035,-2.13086 -11.7754,-5.24023 l -0.13086,-0.10743 -0.12304,-0.11132 -65.207,-59.127 -89.8965,86.2402 c 0,0 -5.33398,6.47754 -10.9707,6.61133 z m 178.104,-33.041 c 0.47852,-0.002 0.95703,-0.0332 1.43164,-0.0957 4.84277,-1.33301 8.95605,-4.54004 11.4316,-8.91016 1.44922,-3.5625 1.00293,-6.45703 -4.19727,-13.2148 l -56.0586,-66.2188 -26.375,25.3027 64.9551,58.9062 c 2.33887,2.41504 5.46484,3.91113 8.8125,4.2168 v 0.0137 z M 192.436,227.402 334.446,57.244 c 2.78711,-3.48926 4.5293,-6.97949 3.3418,-10.9121 -1.16113,-4.30273 -4.43457,-7.71777 -8.68555,-9.05664 -1.08105,-0.333984 -2.20508,-0.503906 -3.33594,-0.505859 -3.20801,0.07617 -6.26953,1.35645 -8.57617,3.58789 l -142.033,135.284999 c -11.1719,11.1719 -9.48242,26.0195 1.39258,36.8945 z"/>
+              </g>
+            </svg>
+            <span>arXiv</span>
+          </span>
+          <span class="resource unavailable" aria-disabled="true" title="Code available by December">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.76-.24.76-.54v-2.1c-3.12.68-3.78-1.32-3.78-1.32-.51-1.29-1.25-1.63-1.25-1.63-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.94.1-.73.39-1.22.71-1.5-2.49-.28-5.11-1.25-5.11-5.54 0-1.22.44-2.22 1.15-3-.11-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.14-1.45 3.08-1.15 3.08-1.15.61 1.54.23 2.68.11 2.96.72.78 1.15 1.78 1.15 3 0 4.3-2.62 5.25-5.12 5.53.4.35.76 1.03.76 2.08v3.07c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/>
+            </svg>
+            <span>Code <span class="release-note">(by Dec.)</span></span>
+          </span>
+          <a class="resource" href="https://www.youtube.com/watch?v=L_RraC-AFQE" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M23 7s-.2-1.6-.9-2.3c-.9-.9-1.8-.9-2.3-1C16.6 3.5 12 3.5 12 3.5s-4.6 0-7.8.2c-.5.1-1.4.1-2.3 1C1.2 5.4 1 7 1 7S.8 8.9.8 10.8v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.6.3 7.6.3s4.6 0 7.8-.3c.5 0 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8v-1.8C23.2 8.9 23 7 23 7Z"/>
+              <path d="m10 8 6 3.7-6 3.7Z" fill="#080b0c"/>
+            </svg>
+            <span>Video</span>
+          </a>
+        </nav>
+        <a class="cover-scroll" href="#video">Explore Skel-WAM ↓</a>
+      </div>
+    </header>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="section-nav" aria-expanded="true" aria-label="Collapse navigation" title="Collapse navigation">
+      <span aria-hidden="true">‹</span>
+    </button>
+    <nav class="nav is-open" id="section-nav" aria-label="Section navigation">
+      <a class="brand" href="#top" aria-label="Skel-WAM — back to top">
+        <img src="./static/images/title.png" width="2172" height="724" alt="Skel-WAM">
+      </a>
+      <div>
+        <a href="#video">Video</a>
+        <a href="#abstract">Abstract</a>
+        <a href="#overview">Overview</a>
+        <a href="#demos">Real robot</a>
+        <a href="#transfer">Human → Robot</a>
+        <a href="#ablation">Visual grounding</a>
+        <a href="#background">Background</a>
+        <a href="#simulation">Simulation</a>
+        <a href="#results">Results</a>
+        <!-- <a href="#bibtex">BibTeX</a> -->
+      </div>
+    </nav>
+    <main>
+      <div class="reading-progress" aria-hidden="true">
+        <span id="reading-progress">
+        </span>
+      </div>
+      <div class="highlight-strip wrap" aria-label="Research highlights">
+        <a href="#demos"><strong>79.86<span>%</span></strong><span>Real-world success</span></a>
+        <a href="#transfer"><strong>+47.22<span> pp</span></strong><span>Human-to-robot transfer gain</span></a>
+        <a href="#simulation"><strong>63.29<span>%</span></strong><span>Simulation success</span></a>
+      </div>
+      <section class="wrap" id="video">
+        <h2 class="center-heading">Video</h2>
+        <div class="overview-video">
+          <iframe src="https://www.youtube.com/embed/L_RraC-AFQE?si=Bx2JNijq1F8JMmAF" title="Skel-WAM project video supplied by the authors" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+          </iframe>
+        </div>
+        <p class="source-note center"><a href="https://www.youtube.com/watch?v=L_RraC-AFQE" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
+      </section>
+      <section class="wrap" id="abstract">
+        <h2 class="center-heading">Abstract</h2>
+        <div class="abstract-copy">
+          <p>Robot demonstrations are expensive to collect and often provide limited distributional coverage of task variations. Human videos offer a low-cost source of complementary manipulation experience, but learning from them requires bridging embodiment gaps in visual appearance and action spaces. We introduce <strong class="abstract-model-name">Skel-WAM</strong>, a world action model that bridges these differences through a <strong class="abstract-model-name">unified hand-skeleton motion interface</strong>. The key insight is to align human and robot motion through a common hand topology, combining skeleton overlays that ground motion in the scene with structured 2.5-D keypoints that encode explicit hand kinematics. Video and Keypoint Experts jointly learn visual and skeletal dynamics through a Mixture-of-Transformers, while a separate robot-trained Action Expert maps these predictions to executable controls. This separation enables human and robot demonstrations to directly supervise shared dynamics without requiring robot action labels for human videos. Across four real-world bimanual tasks and seven simulated tasks, Skel-WAM achieves average success rates of <strong class="abstract-model-name">79.86%</strong> and <strong class="abstract-model-name">63.29%</strong>, surpassing the strongest baseline by 22.22 and 8.28 percentage points, respectively. Human–robot cotraining more than doubles real-world success on task variations absent from robot training data, from 38.89% to <strong class="abstract-model-name">86.11%</strong>. These results demonstrate that a shared skeletal interface enables joint learning across human and robot data and expands robot task coverage through complementary human demonstrations.</p>
+        </div>
+      </section>
+      <section class="wrap" id="overview">
+        <h2 class="center-heading">Overview</h2>
+        <figure class="overview-figure" aria-labelledby="overview-part-01">
+          <h3 class="overview-part-heading" id="overview-part-01">
+            <span class="overview-part-number" aria-hidden="true">01</span>
+            A unified hand-skeleton motion interface
+          </h3>
+          <img class="full-image" src="./static/images/teaser.png" width="3190" height="1058" loading="lazy" alt="Skel-WAM aligns human and robot manipulation through a shared hand-skeleton motion interface.">
+          <figcaption>
+            <p><strong>Skel-WAM</strong> is a world action model that bridges human and robot manipulation through a unified hand-skeleton motion interface.</p>
+            <ul>
+              <li>Scene-grounded skeleton overlays and structured 2.5-D keypoints represent human and robot motion in a shared space, enabling cross-embodiment alignment and joint prediction of visual dynamics and skeletal motion.</li>
+              <li>This representation allows Skel-WAM to learn robot-missing task variations from human demonstrations without robot action labels, raising average success from 38.89% to 86.11%.</li>
+            </ul>
+          </figcaption>
+        </figure>
+        <figure class="overview-figure" aria-labelledby="overview-part-02">
+          <h3 class="overview-part-heading" id="overview-part-02">
+            <span class="overview-part-number" aria-hidden="true">02</span>
+            Model architecture
+          </h3>
+          <img class="full-image" src="./static/images/method_overview.png" width="6631" height="2631" loading="lazy" alt="Skel-WAM architecture: Video–Keypoint Mixture-of-Transformers and robot-specific Action Expert.">
+          <figcaption>
+            <p>Skel-WAM combines Video, Keypoint, and Action Experts through conditional flow matching, separating cross-embodiment dynamics learning from executable robot control.</p>
+            <ul>
+              <li><strong>Video–Keypoint Mixture-of-Transformers.</strong> The Video Expert predicts future skeleton-overlay video latents using the current observation, task instruction, and keypoint history. The Keypoint Expert predicts future hand trajectories conditioned on video features. Layer-aligned experts exchange information through stream-wise attention.</li>
+              <li><strong>Causal Action Expert.</strong> A separate Transformer conditions action prediction on video latents and structured keypoints. Causal attention gives each action access only to action and condition tokens at or before its timestep.</li>
+              <li><strong>Human–robot cotraining.</strong> Human and robot overlay videos and skeletons first train the shared MoT. The Action Expert is then trained exclusively on robot data, without propagating action gradients into the backbone.</li>
+              <li><strong>Inference.</strong> The model sequentially samples future video, skeleton keypoints, and robot actions, keeping observed anchors fixed and requiring no future observations.</li>
+            </ul>
+          </figcaption>
+        </figure>
+      </section>
+      <section class="wrap" id="demos">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">01 / Real-world manipulation</p>
+            <h2>Real-World Manipulation</h2>
+          </div>
+        </div>
+        <p class="experiment-context">We evaluate four real-world bimanual tasks under robot-demonstrated settings. Skel-WAM achieves 79.86% average SR and 89.24% PSR with robot-only training.</p>
+        <div class="pills" id="task-tabs" role="group" aria-label="Select robot task">
+          <button data-task="0" aria-pressed="true">Stack cups</button>
+          <button data-task="1" aria-pressed="false">Pour water</button>
+          <button data-task="2" aria-pressed="false">Place fruit</button>
+          <button data-task="3" aria-pressed="false">Put into drawer</button>
+        </div>
+        <div class="demo-grid">
+          <div class="viewer">
+            <div class="viewer-label">
+              <span>Robot execution</span>
+            </div>
+            <div class="media-slot" id="execution-video" data-media="execution/stack-cups" data-label="Stack Cups · robot execution">
+              <video controls playsinline preload="metadata" poster="./static/videos/real-main/web/stack-3422-2.jpg" src="./static/videos/real-main/web/stack-3422-2.mp4" aria-label="Stack Cups · robot execution">
+              </video>
+            </div>
+            <div class="execution-speed" role="group" aria-label="Robot execution playback speed">
+              <span>Playback speed</span>
+              <button type="button" data-execution-speed="0.5" aria-pressed="false">0.5×</button>
+              <button type="button" data-execution-speed="1" aria-pressed="false">1×</button>
+              <button type="button" data-execution-speed="2" aria-pressed="true">2×</button>
+              <button type="button" data-execution-speed="4" aria-pressed="false">4×</button>
+            </div>
+          </div>
+          <aside class="task-story" aria-live="polite">
+            <span class="badge">Robot-only training</span>
+            <h3 id="task-title">Stack cups</h3>
+            <p id="task-description">Sequentially stack the two side cups onto the center cup.</p>
+            <div class="large-number" id="task-score">
+              77.78
+              <span>%</span>
+            </div>
+            <p class="muted">Full-task success rate <span id="task-trials" class="evaluation-trials">· 18 evaluation trials</span></p>
+            <p class="fine" id="task-insight">Progress milestones: picking and stacking each side cup.</p>
+          </aside>
+        </div>
+      </section>
+      <section class="tint" id="transfer">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">02 / Human-to-robot transfer</p>
+              <h2>Human-to-Robot Transfer <span class="section-highlight">(High Lights)</span></h2>
+            </div>
+          </div>
+          <p class="experiment-context">Under fixed task instructions, human demonstrations cover four variations absent from robot training data: middle-cup position, wrist rotation, distractors in the target box, and target drawer height.</p>
+          <div class="pills" id="transfer-tabs" role="group" aria-label="Select human-covered variation">
+            <button data-variation="0" aria-pressed="true">Position</button>
+            <button data-variation="1" aria-pressed="false">Rotation</button>
+            <button data-variation="2" aria-pressed="false">Distractors</button>
+            <button data-variation="3" aria-pressed="false">Height</button>
+          </div>
+          <div class="video-triptych">
+            <div>
+              <p class="mini-label">Human demonstration</p>
+              <div class="media-slot" id="transfer-human" data-media="transfer/position/human" data-label="Human demonstration">
+                <span class="play-outline">▷</span>
+                <strong>Human demonstration</strong>
+                <span>Video coming soon</span>
+              </div>
+            </div>
+            <div>
+              <p class="mini-label">Human–robot cotraining</p>
+              <div class="media-slot" id="transfer-cotrain" data-media="transfer/position/cotrain" data-label="Human–robot cotraining">
+                <span class="play-outline">▷</span>
+                <strong>Human–robot cotraining</strong>
+                <span>Video coming soon</span>
+              </div>
+            </div>
+            <div>
+              <p class="mini-label">Cotrained video prediction</p>
+              <div class="media-slot" id="transfer-prediction" data-media="transfer/position/prediction" data-label="Cotrained video prediction">
+                <span class="play-outline">▷</span>
+                <strong>Cotrained video prediction</strong>
+                <span>Video coming soon</span>
+              </div>
+            </div>
+          </div>
+          <div class="sync-controls" data-sync="transfer">
+            <button type="button" data-action="play" disabled>Play together</button>
+            <button type="button" data-action="pause" disabled>Pause</button>
+            <label>Time <input type="range" min="0" max="1" step="0.05" value="0" aria-label="Seek all three comparison videos" disabled></label>
+            <label>
+              Speed
+              <select disabled>
+                <option value="0.5">0.5×</option>
+                <option value="1">1×</option>
+                <option value="2" selected>2×</option>
+              </select>
+            </label>
+            <span class="fine">
+            </span>
+          </div>
+          <div class="transfer-grid">
+            <div>
+              <div class="scene" id="transfer-scene">
+                <svg class="crop" viewBox="408 200 690 358" role="img" aria-label="Cup position variation from human demonstrations">
+                  <image href="./static/images/human_settings.png" width="2133" height="1200"/>
+                </svg>
+              </div>
+              <p class="source-note"><span class="red-dot">●</span> Robot demonstration setting &nbsp; <span class="green-dot">●</span> Human demonstration setting</p>
+            </div>
+            <div aria-live="polite">
+              <h3 id="variation-title">Middle-cup position</h3>
+              <p id="variation-description">Human demonstrations vary the middle-cup position in Stack Cups; this variation is absent from the robot demonstrations.</p>
+              <div id="transfer-bars">
+              </div>
+              <p class="gain" id="transfer-gain">+55.56 percentage points</p>
+              <p class="fine">Full-task success · 9 evaluation trials per task.<br>These task variations are absent from robot training data.</p>
+            </div>
+          </div>
+          <div class="takeaway">
+            <strong>38.89% → 86.11%</strong>
+            <p>Compared with robot-only training, human–robot cotraining raises average SR from 38.89% to 86.11% and average PSR from 61.11% to 95.14% on the four robot-missing task variations.</p>
+          </div>
+        </div>
+      </section>
+      <section class="wrap" id="ablation">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">03 / Visual grounding</p>
+            <h2>Visual Grounding</h2>
+          </div>
+        </div>
+        <p class="experiment-context">Skeleton overlays and structured keypoints play complementary roles in human-to-robot transfer: keypoints encode finger-level trajectories, while overlays ground them in the scene.</p>
+        <div class="ablation-grid">
+          <div class="control-card">
+            <h3>Build the motion interface</h3>
+            <label class="toggle"><input type="checkbox" id="overlay" checked><span><strong>Skeleton overlays</strong><small>Connect hand motion to the visual scene.</small></span></label>
+            <label class="toggle"><input type="checkbox" id="keypoints" checked><span><strong>Structured 2.5-D keypoints</strong><small>Preserve finger identity and explicit trajectories.</small></span></label>
+            <div aria-live="polite">
+              <div class="large-number" id="ablation-score">
+                86.11
+                <span>%</span>
+              </div>
+              <p id="ablation-explanation">The full cotrained model achieves 86.11% average SR. Removing overlays reduces SR to 50.00%; removing keypoints reduces SR below 17%, with or without overlays.</p>
+            </div>
+            <p class="fine">Measured average success on human-covered variations.</p>
+          </div>
+          <div>
+            <h3>Inspect the predicted future</h3>
+            <div class="pills" id="prediction-tabs" role="group" aria-label="Select predicted sequence">
+              <button data-prediction="0" aria-pressed="true">Wrist-guard transport</button>
+              <button data-prediction="1" aria-pressed="false">Mango grasp</button>
+            </div>
+            <div class="prediction-pair">
+              <div>
+                <p class="mini-label">Skel-WAM · with overlays</p>
+                <div class="media-slot" id="prediction-video-full" data-media="prediction/wrist-guard/full" data-label="Skel-WAM prediction">
+                  <span class="play-outline">▷</span>
+                  <strong>Skel-WAM prediction</strong>
+                  <span>Video coming soon</span>
+                </div>
+              </div>
+              <div>
+                <p class="mini-label">Without skeleton overlays</p>
+                <div class="media-slot" id="prediction-video-without" data-media="prediction/wrist-guard/without" data-label="Prediction without overlays">
+                  <span class="play-outline">▷</span>
+                  <strong>Prediction without overlays</strong>
+                  <span>Video coming soon</span>
+                </div>
+              </div>
+            </div>
+            <p class="source-note">Model-generated video predictions.</p>
+            <div class="sync-controls" data-sync="prediction">
+              <button type="button" data-action="play" disabled>Play together</button>
+              <button type="button" data-action="pause" disabled>Pause</button>
+              <label>Time <input type="range" min="0" max="1" step="0.05" value="0" aria-label="Seek both comparison videos" disabled></label>
+              <label>
+                Speed
+                <select disabled>
+                  <option value="0.5">0.5×</option>
+                  <option value="1">1×</option>
+                  <option value="2" selected>2×</option>
+                </select>
+              </label>
+              <span class="fine">
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="tint" id="background">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">04 / Background generalization</p>
+              <h2>Background Generalization</h2>
+            </div>
+          </div>
+          <p class="experiment-context">Under a new background, Skel-WAM achieves 58.33% average SR and 76.04% PSR, exceeding EgoVLA by 20.83 and 19.79 percentage points, respectively.</p>
+          <div class="pills" id="background-tabs" role="group" aria-label="Background task">
+            <button data-background="0" aria-pressed="true">Stack cups</button>
+            <button data-background="1" aria-pressed="false">Pour water</button>
+            <button data-background="2" aria-pressed="false">Place fruit</button>
+            <button data-background="3" aria-pressed="false">Put into drawer</button>
+          </div>
+          <div class="experiment-shell">
+            <div class="prediction-pair">
+              <div>
+                <p class="mini-label">Robot execution · unseen background</p>
+                <div class="media-slot" id="background-execution" data-media="background/stack-cups/execution" data-label="Stack cups · execution">
+                  <span class="play-outline">▷</span>
+                  <strong>Stack cups · execution</strong>
+                  <span>Video coming soon</span>
+                </div>
+              </div>
+              <div>
+                <p class="mini-label">Visual prediction · unseen background</p>
+                <div class="media-slot" id="background-prediction" data-media="background/stack-cups/prediction" data-label="Stack cups · visual prediction">
+                  <span class="play-outline">▷</span>
+                  <strong>Stack cups · visual prediction</strong>
+                  <span>Video coming soon</span>
+                </div>
+              </div>
+            </div>
+            <div class="sync-controls" data-sync="background">
+              <button type="button" data-action="play" disabled>Play together</button>
+              <button type="button" data-action="pause" disabled>Pause</button>
+              <label>Time <input type="range" min="0" max="1" step="0.05" value="0" aria-label="Comparison video time" disabled></label>
+              <label>
+                Speed
+                <select disabled>
+                  <option value="0.5">0.5×</option>
+                  <option value="1">1×</option>
+                  <option value="2" selected>2×</option>
+                </select>
+              </label>
+              <span class="fine">
+              </span>
+            </div>
+            <p class="fine">Robot-only training · 6 evaluation trials per task across four tasks. Future-video predictions maintain task-relevant motion and preserve the unseen test-time background.</p>
+          </div>
+        </div>
+      </section>
+      <section class="wrap" id="simulation">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">05 / Simulation</p>
+            <h2>Simulation Experiments</h2>
+          </div>
+        </div>
+        <p class="experiment-context">On seven EgoVLA-Sim tasks, Skel-WAM achieves 63.29% SR and 78.42% PSR. All methods use robot data only, without additional robot pretraining or human–robot cotraining.</p>
+        <div class="experiment-shell">
+          <div class="sim-layout">
+            <div class="sim-directory" role="group" aria-label="Simulation tasks">
+              <button type="button" data-sim="0" aria-pressed="true"><span class="task-index">01</span>Stack can<span aria-hidden="true">↗</span></button>
+              <button type="button" data-sim="1" aria-pressed="false"><span class="task-index">02</span>Push box<span aria-hidden="true">↗</span></button>
+              <button type="button" data-sim="2" aria-pressed="false"><span class="task-index">03</span>Open drawer<span aria-hidden="true">↗</span></button>
+              <button type="button" data-sim="3" aria-pressed="false"><span class="task-index">04</span>Close drawer<span aria-hidden="true">↗</span></button>
+              <button type="button" data-sim="4" aria-pressed="false"><span class="task-index">05</span>Flip mug<span aria-hidden="true">↗</span></button>
+              <button type="button" data-sim="5" aria-pressed="false"><span class="task-index">06</span>Pour balls<span aria-hidden="true">↗</span></button>
+              <button type="button" data-sim="6" aria-pressed="false"><span class="task-index">07</span>Open laptop<span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="sim-content">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">EgoVLA-Sim</p>
+                  <h3 id="sim-title">Stack can</h3>
+                </div>
+                <div class="inline-stat">
+                  <strong id="sim-score">58.06%</strong>
+                  <span>Task success</span>
+                </div>
+              </div>
+              <div class="prediction-pair">
+                <div>
+                  <p class="mini-label">Robot execution</p>
+                  <div class="media-slot" id="sim-execution" data-media="simulation/stack-can/execution" data-label="Stack can · execution">
+                    <span class="play-outline">▷</span>
+                    <strong>Stack can · execution</strong>
+                    <span>Video coming soon</span>
+                  </div>
+                </div>
+                <div>
+                  <p class="mini-label">Visual prediction</p>
+                  <div class="media-slot" id="sim-prediction" data-media="simulation/stack-can/prediction" data-label="Stack can · visual prediction">
+                    <span class="play-outline">▷</span>
+                    <strong>Stack can · visual prediction</strong>
+                    <span>Video coming soon</span>
+                  </div>
+                </div>
+              </div>
+              <div class="sync-controls" data-sync="simulation">
+                <button type="button" data-action="play" disabled>Play together</button>
+                <button type="button" data-action="pause" disabled>Pause</button>
+                <label>Time <input type="range" min="0" max="1" step="0.05" value="0" aria-label="Comparison video time" disabled></label>
+                <label>
+                  Speed
+                  <select disabled>
+                    <option value="0.5">0.5×</option>
+                    <option value="1" selected>1×</option>
+                    <option value="2">2×</option>
+                  </select>
+                </label>
+                <span class="fine">
+                </span>
+              </div>
+              <p class="fine">93 episodes per task: 27 in-distribution and 66 with unseen tables or backgrounds. Object positions are sampled within the benchmark range in both settings.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="tint" id="results">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">06 / Results</p>
+              <h2>Results</h2>
+            </div>
+          </div>
+          <div class="result-controls">
+            <label>
+              Evaluation
+              <select id="benchmark">
+                <option value="real">Real-world · robot-only</option>
+                <option value="human">Human → robot + ablations</option>
+                <option value="background">Background generalization · robot-only</option>
+                <option value="sim">Simulation · robot-only</option>
+                <option value="sim_ablation">Simulation ablations</option>
+              </select>
+            </label>
+            <label>
+              Task
+              <select id="result-task">
+                <option value="1">Average</option>
+              </select>
+            </label>
+            <label>
+              Metric
+              <select id="metric">
+                <option value="0">Success rate (SR)</option>
+                <option value="1">Progress success rate (PSR)</option>
+              </select>
+            </label>
+          </div>
+          <div class="chart" id="result-chart" aria-live="polite">
+          </div>
+          <p class="fine" id="result-context">Real-world evaluation: four tasks; 24 trials per task, except Stack Cups (18).</p>
+          <div class="all-results">
+            <div class="table-heading">
+              <h3>Detailed results</h3>
+              <label class="show-tables"><input type="checkbox" id="show-all-tables"> Show all tables</label>
+            </div>
+            <p class="fine">SR measures full-task completion. PSR measures task-specific milestones.</p>
+            <div class="table-wrap" data-result-table="real" tabindex="0" role="region" aria-label="Real-world results with robot-only training · SR / PSR (%); scroll horizontally on small screens">
+              <table>
+                <caption>Real-world results with robot-only training · SR / PSR (%)</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Method</th>
+                    <th scope="col">Avg. ↑</th>
+                    <th scope="col">Stack Cups</th>
+                    <th scope="col">Pour Water</th>
+                    <th scope="col">Place Fruit</th>
+                    <th scope="col">Put into Drawer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">ACT</th>
+                    <td>12.32 / 44.39</td>
+                    <td>11.76 / 58.82</td>
+                    <td>16.67 / 60.42</td>
+                    <td>0.00 / 37.50</td>
+                    <td>20.83 / 20.83</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Fast-WAM</th>
+                    <td>38.89 / 50.69</td>
+                    <td>38.89 / 48.61</td>
+                    <td>41.67 / 60.42</td>
+                    <td>37.50 / 52.08</td>
+                    <td>37.50 / 41.67</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">LDA</th>
+                    <td>42.01 / 53.30</td>
+                    <td>38.89 / 56.94</td>
+                    <td>41.67 / 54.17</td>
+                    <td>45.83 / 58.33</td>
+                    <td>41.67 / 43.75</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">EgoVLA</th>
+                    <td>57.64 / 69.10</td>
+                    <td>55.56 / 76.39</td>
+                    <td>70.83 / 85.42</td>
+                    <td>45.83 / 56.25</td>
+                    <td>58.33 / 58.33</td>
+                  </tr>
+                  <tr class="ours">
+                    <th scope="row">Skel-WAM</th>
+                    <td>79.86 / 89.24</td>
+                    <td>77.78 / 90.28</td>
+                    <td>87.50 / 95.83</td>
+                    <td>70.83 / 83.33</td>
+                    <td>83.33 / 87.50</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-wrap" data-result-table="human" tabindex="0" role="region" aria-label="Robot-missing task variations and ablations · SR / PSR (%); scroll horizontally on small screens">
+              <table>
+                <caption>Robot-missing task variations and ablations · SR / PSR (%)</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Method</th>
+                    <th scope="col">Avg. ↑</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Rotation</th>
+                    <th scope="col">Disturbance</th>
+                    <th scope="col">Height</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">LDA-cotrain</th>
+                    <td>30.56 / 49.31</td>
+                    <td>33.33 / 41.67</td>
+                    <td>22.22 / 44.44</td>
+                    <td>44.44 / 61.11</td>
+                    <td>22.22 / 50.00</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Skel-WAM, no cotrain</th>
+                    <td>38.89 / 61.11</td>
+                    <td>11.11 / 50.00</td>
+                    <td>77.78 / 83.33</td>
+                    <td>66.67 / 66.67</td>
+                    <td>0.00 / 44.44</td>
+                  </tr>
+                  <tr class="ours">
+                    <th scope="row">Skel-WAM, cotrain</th>
+                    <td>86.11 / 95.14</td>
+                    <td>66.67 / 91.67</td>
+                    <td>100.00 / 100.00</td>
+                    <td>77.78 / 88.89</td>
+                    <td>100.00 / 100.00</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cotrain w/o both</th>
+                    <td>16.67 / 31.25</td>
+                    <td>11.11 / 19.44</td>
+                    <td>33.33 / 61.11</td>
+                    <td>22.22 / 33.33</td>
+                    <td>0.00 / 11.11</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cotrain w/o keypoints</th>
+                    <td>13.89 / 34.03</td>
+                    <td>11.11 / 25.00</td>
+                    <td>22.22 / 55.56</td>
+                    <td>22.22 / 38.89</td>
+                    <td>0.00 / 16.67</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cotrain w/o overlay</th>
+                    <td>50.00 / 68.75</td>
+                    <td>44.44 / 86.11</td>
+                    <td>77.78 / 83.33</td>
+                    <td>44.44 / 55.56</td>
+                    <td>33.33 / 50.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-wrap" data-result-table="background" tabindex="0" role="region" aria-label="Background generalization results with robot-only training">
+              <table>
+                <caption>Background generalization · robot-only · SR / PSR (%)</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Method</th>
+                    <th scope="col">Average SR</th>
+                    <th scope="col">Average PSR</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">ACT</th>
+                    <td>12.50</td>
+                    <td>34.38</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Fast-WAM</th>
+                    <td>25.00</td>
+                    <td>37.50</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">LDA</th>
+                    <td>29.17</td>
+                    <td>42.71</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">EgoVLA</th>
+                    <td>37.50</td>
+                    <td>56.25</td>
+                  </tr>
+                  <tr class="ours">
+                    <th scope="row">Skel-WAM</th>
+                    <td>58.33</td>
+                    <td>76.04</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="fine" data-result-note="background">Robot-only training; 6 trials per task across four tasks.</p>
+            <div class="table-wrap" data-result-table="sim" tabindex="0" role="region" aria-label="EgoVLA-Sim results · SR / PSR (%); scroll horizontally on small screens">
+              <table>
+                <caption>EgoVLA-Sim results · SR / PSR (%)</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Method</th>
+                    <th scope="col">Avg. ↑</th>
+                    <th scope="col">Stack Can</th>
+                    <th scope="col">Push Box</th>
+                    <th scope="col">Open Drawer</th>
+                    <th scope="col">Close Drawer</th>
+                    <th scope="col">Flip Mug</th>
+                    <th scope="col">Pour Balls</th>
+                    <th scope="col">Open Laptop</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">ACT</th>
+                    <td>24.88 / 55.93</td>
+                    <td>12.90 / 13.98</td>
+                    <td>16.13 / 87.73</td>
+                    <td>22.58 / 70.43</td>
+                    <td>59.14 / 96.77</td>
+                    <td>2.15 / 2.15</td>
+                    <td>5.38 / 64.52</td>
+                    <td>55.91 / 55.91</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">LDA</th>
+                    <td>34.87 / 61.52</td>
+                    <td>22.58 / 23.66</td>
+                    <td>22.58 / 93.55</td>
+                    <td>21.51 / 76.34</td>
+                    <td>66.67 / 78.49</td>
+                    <td>50.54 / 50.54</td>
+                    <td>2.15 / 43.55</td>
+                    <td>58.06 / 64.52</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Fast-WAM</th>
+                    <td>37.33 / 56.22</td>
+                    <td>29.03 / 29.03</td>
+                    <td>19.35 / 89.25</td>
+                    <td>38.71 / 83.33</td>
+                    <td>97.85 / 98.92</td>
+                    <td>24.73 / 26.88</td>
+                    <td>17.20 / 29.57</td>
+                    <td>34.41 / 36.56</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">EgoVLA</th>
+                    <td>55.01 / 65.31</td>
+                    <td>56.99 / 56.99</td>
+                    <td>64.52 / 80.65</td>
+                    <td>49.46 / 73.16</td>
+                    <td>90.32 / 92.83</td>
+                    <td>4.41 / 4.41</td>
+                    <td>56.99 / 83.56</td>
+                    <td>62.37 / 65.59</td>
+                  </tr>
+                  <tr class="ours">
+                    <th scope="row">Skel-WAM</th>
+                    <td>63.29 / 78.42</td>
+                    <td>58.06 / 59.14</td>
+                    <td>66.67 / 97.85</td>
+                    <td>49.46 / 86.02</td>
+                    <td>100.00 / 100.00</td>
+                    <td>45.16 / 45.16</td>
+                    <td>27.96 / 61.83</td>
+                    <td>95.70 / 98.92</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-wrap" data-result-table="sim_ablation" tabindex="0" role="region" aria-label="Simulation ablations · average across seven tasks (%); scroll horizontally on small screens">
+              <table>
+                <caption>Simulation ablations · average across seven tasks (%)</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Method</th>
+                    <th scope="col">SR</th>
+                    <th scope="col">PSR</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="ours">
+                    <th scope="row">Skel-WAM</th>
+                    <td>63.29</td>
+                    <td>78.42</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">w/o keypoints</th>
+                    <td>38.40</td>
+                    <td>58.14</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">w/o overlay</th>
+                    <td>61.90</td>
+                    <td>77.88</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">w/o both</th>
+                    <td>34.56</td>
+                    <td>55.53</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <noscript>
+            <p>Interactive controls require JavaScript. All reported measurements are available in the tables above.</p>
+          </noscript>
+        </div>
+      </section>
+      <!-- <section class="wrap" id="bibtex">
+        <div class="bibtex-heading">
+          <h2>BibTeX</h2>
+          <span class="badge">Provisional citation</span>
+        </div>
+        <pre class="bibtex-code" tabindex="0" aria-label="Provisional BibTeX citation"><code>% Provisional citation — update with the final publication details.
+@misc{cai2026skelwam,
+  title = {Skel-WAM: A Hand-Skeleton-Conditioned World Action Model
+           for Human-to-Robot Manipulation Transfer},
+  author = {Cai, Zetao and Li, Yaping and Wang, Yiqun and Zhan, Xinyu
+            and Yang, Yuyin and Ma, Haoxiang and Li, Kailin and Lu, Tao
+            and Pang, Jiangmiao and Xu, Linning and Lin, Dahua},
+  year = {2026}
+}</code></pre>
+      </section> -->
+    </main>
+    <footer>
+      <a href="#top">Back to top ↑</a>
+      <p>Layout inspired by <a href="https://nerfies.github.io/">Nerfies</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 template</a></p>
+    </footer>
+  </body>
+</html>
