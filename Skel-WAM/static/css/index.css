@@ -167,3 +167,24 @@ html { scroll-padding-top: 32px; }
 /* Cover title and author profile link. */
 .cover h1 { color: var(--green); }
 .authors a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Keep the opening content centered independently of the floating sidebar. */
+.cover-content {
+  margin-inline: auto;
+  min-width: 0;
+  text-align: center;
+}
+.cover h1,
+.cover .authors,
+.cover .affiliations {
+  text-align: center;
+  margin-inline: auto;
+}
+.cover .resource-icons {
+  width: 100%;
+  justify-content: center;
+}
+.cover .title-logo {
+  max-width: 100%;
+  margin-inline: auto;
+}
